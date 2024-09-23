@@ -43,7 +43,8 @@ void random_noise() {
             break;
         }
 
-        Sleep(100);
+        Sleep(50);
+        win.pop_frame();
     }
 }
 

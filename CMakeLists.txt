@@ -24,8 +24,9 @@ set(TINYCTHREAD "${GLFW_SOURCE_DIR}/deps/tinycthread.h"
 
 add_executable(main WIN32 MACOSX_BUNDLE main.c ${ICON} ${GLAD_GL})
 add_executable(webvga WIN32 MACOSX_BUNDLE webvga.cpp window.cpp pollable.cpp framesrv.cpp ${ICON} ${GLAD_GL})
+add_executable(ring_buf_test test_ring_buf.cpp)
 
-set(APPS main webvga)
+set(APPS main webvga ring_buf_test)
 
 if(MSVC)
     # Tell MSVC to use main instead of WinMain

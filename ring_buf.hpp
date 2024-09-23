@@ -1,11 +1,12 @@
 
+// A fifo queue implemented by a ring buffer.
 template <typename DataType>
 struct RingBuf {
   RingBuf(size_t storage_size):
-      storage(new DataType[storage_size]),
-      storage_size(storage_size),
-      used_start(0),
-      used_size(0)
+    storage(new DataType[storage_size]),
+    storage_size(storage_size),
+    used_start(0),
+    used_size(0)
   {}
   ~RingBuf() {
     delete[] storage;
@@ -18,13 +19,19 @@ struct RingBuf {
     return storage + ((used_start + used_size++) % storage_size);
   }
 
-  DataType* pop_elem() {
+  DataType* get_next_elem() {
     if(used_size <= 0) {
       return nullptr;
     }
-    DataType* res = storage + used_start;
+    return storage + used_start;
+  }
+
+  void pop_elem() {
+    if(used_size <= 0) {
+      return;
+    }
+    --used_size;
     used_start = (used_start+1)%storage_size;
-    return res;
   }
 
   DataType* operator[](unsigned idx) {
