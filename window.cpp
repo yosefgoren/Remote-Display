@@ -19,7 +19,11 @@
 // Aux functions ===========================
 
 static void drawSquare(float top, float bot, float left, float right, color_t color) {
-  glColor3f(color.red, color.green, color.blue);
+  glColor3f(
+    float(color.red)/256,
+    float(color.green)/256,
+    float(color.blue)/256
+  );
   glBegin(GL_QUADS);
   glVertex2f(bot, left);
   glVertex2f(top, left);
@@ -52,7 +56,7 @@ static void drawFrame(GLFWwindow* window, const frame_t* frame) {
 // Interface Impl ===========================
 
 struct WindowData {
-  static constexpr size_t FRAME_BUF_SIZE = 32;
+  static constexpr size_t FRAME_BUF_SIZE = 64;
 
   WindowData() :window(nullptr), buf(FRAME_BUF_SIZE), num_awaiting_ack(0){}
 

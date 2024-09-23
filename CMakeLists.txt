@@ -25,6 +25,7 @@ set(TINYCTHREAD "${GLFW_SOURCE_DIR}/deps/tinycthread.h"
 add_executable(main WIN32 MACOSX_BUNDLE main.c ${ICON} ${GLAD_GL})
 add_executable(webvga WIN32 MACOSX_BUNDLE webvga.cpp window.cpp pollable.cpp framesrv.cpp ${ICON} ${GLAD_GL})
 add_executable(ring_buf_test test_ring_buf.cpp)
+add_executable(frame_server_test test_frame_server.cpp pollable.cpp framesrv.cpp)
 
 set(APPS main webvga ring_buf_test)
 

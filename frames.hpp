@@ -1,17 +1,21 @@
 #pragma once
 
-#define CELL_PIXELS 2
+#include <stdint.h>
+
+#define CELL_PIXELS 64
 #define WIDTH_HOST (WIDTH_GUEST * CELL_PIXELS)
 #define HEIGHT_HOST (HEIGHT_GUEST * CELL_PIXELS)
-#define WIDTH_GUEST 800
-#define HEIGHT_GUEST 600
+#define WIDTH_GUEST 20
+#define HEIGHT_GUEST 20
+// #define WIDTH_GUEST 800
+// #define HEIGHT_GUEST 600
 
 typedef struct color {
-    float red;
-    float green;
-    float blue;
+	uint8_t red;
+	uint8_t green;
+	uint8_t blue;
 } color_t;
 
 typedef struct frame {
-    color_t values[HEIGHT_GUEST][WIDTH_GUEST];
+	color_t values[HEIGHT_GUEST][WIDTH_GUEST];
 } frame_t;
